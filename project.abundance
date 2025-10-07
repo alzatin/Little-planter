@@ -43,6 +43,90 @@
       "type": "number"
     },
     {
+      "atomType": "Assembly",
+      "name": "Assembly",
+      "x": 0.7417962003454232,
+      "y": 0.5062111801242236,
+      "uniqueID": "3435b9b4-7f5e-49b0-83cd-06648581b756",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": {
+            "geometry": "cut-609b1cff84b83606b082a8c26dd632a485e832c378a5355a0c9dd76d4d21eda9",
+            "dimension": "3D",
+            "tags": [],
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "color": "#aad7f2",
+            "bom": []
+          }
+        },
+        {
+          "name": "Shape 3",
+          "ioValue": {
+            "geometry": "move-83357ffc6cc905834a8d894d98536c4df1a4e3a636fba93eb61a8853c3021804",
+            "tags": [],
+            "color": "#aad7f2",
+            "plane": {
+              "origin": [
+                0,
+                0,
+                0
+              ],
+              "xDir": [
+                1,
+                0,
+                0
+              ],
+              "normal": [
+                0,
+                0,
+                1
+              ]
+            },
+            "bom": [],
+            "dimension": "3D"
+          }
+        }
+      ]
+    },
+    {
+      "atomType": "Move",
+      "name": "Move",
+      "x": 0.5198618307426598,
+      "y": 0.2267080745341615,
+      "uniqueID": "49d14c95-b4b6-4a56-a69b-6271966fe1c4",
+      "ioValues": [
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 0
+        },
+        {
+          "name": "zDist",
+          "ioValue": 10
+        }
+      ]
+    },
+    {
       "atomType": "Molecule",
       "name": "Plate",
       "x": 0.33678756476683935,
@@ -109,8 +193,7 @@
           "ioValues": [
             {
               "name": "height",
-              "ioValue": 30,
-              "currentEquation": "30"
+              "ioValue": 30
             }
           ]
         },
@@ -136,8 +219,7 @@
           "ioValues": [
             {
               "name": "height",
-              "ioValue": 25,
-              "currentEquation": "25"
+              "ioValue": 25
             }
           ]
         },
@@ -172,8 +254,7 @@
             },
             {
               "name": "zDist",
-              "ioValue": 5,
-              "currentEquation": "5"
+              "ioValue": 5
             }
           ]
         },
@@ -194,8 +275,7 @@
           "ioValues": [
             {
               "name": "Fillet val",
-              "ioValue": 2,
-              "currentEquation": "2"
+              "ioValue": 2
             }
           ],
           "topLevel": false,
@@ -214,12 +294,7 @@
               "x": 0.4893617021276595,
               "y": 0.5903614457831325,
               "uniqueID": "33b9076b-9247-4da6-af40-f8f67a969ef0",
-              "ioValues": [
-                {
-                  "name": "fillet",
-                  "ioValue": 2
-                }
-              ],
+              "ioValues": [],
               "codeVersion": 1,
               "code": "\n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n      {inputName: \"fillet\", type: \"number\", defaultValue: .5},\n      \n      ]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n\n      //This makes a new copy of the shape and moves it in the X direction\n      let filletShape = importedShape.geometry[0].clone().fillet(fillet)\n\n      //Console.log works for debugging to better see what is happening under the hood\n      console.log(\"Shape:\")\n      console.log(importedShape);\n\n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [filletShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n\n    return shape1\n      "
             },
@@ -838,91 +913,6 @@
       ],
       "fileTypeVersion": 1,
       "compiledBom": []
-    },
-    {
-      "atomType": "Assembly",
-      "name": "Assembly",
-      "x": 0.7417962003454232,
-      "y": 0.5062111801242236,
-      "uniqueID": "3435b9b4-7f5e-49b0-83cd-06648581b756",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": {
-            "geometry": "cut-609b1cff84b83606b082a8c26dd632a485e832c378a5355a0c9dd76d4d21eda9",
-            "dimension": "3D",
-            "tags": [],
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "color": "#aad7f2",
-            "bom": []
-          }
-        },
-        {
-          "name": "Shape 3",
-          "ioValue": {
-            "geometry": "move-83357ffc6cc905834a8d894d98536c4df1a4e3a636fba93eb61a8853c3021804",
-            "tags": [],
-            "color": "#aad7f2",
-            "plane": {
-              "origin": [
-                0,
-                0,
-                0
-              ],
-              "xDir": [
-                1,
-                0,
-                0
-              ],
-              "normal": [
-                0,
-                0,
-                1
-              ]
-            },
-            "bom": [],
-            "dimension": "3D"
-          }
-        }
-      ]
-    },
-    {
-      "atomType": "Move",
-      "name": "Move",
-      "x": 0.5198618307426598,
-      "y": 0.2267080745341615,
-      "uniqueID": "49d14c95-b4b6-4a56-a69b-6271966fe1c4",
-      "ioValues": [
-        {
-          "name": "xDist",
-          "ioValue": 0
-        },
-        {
-          "name": "yDist",
-          "ioValue": 0
-        },
-        {
-          "name": "zDist",
-          "ioValue": 10,
-          "currentEquation": "10"
-        }
-      ]
     }
   ],
   "allConnectors": [
@@ -945,18 +935,6 @@
       "ap2ID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6"
     },
     {
-      "ap1Name": "geometry or number",
-      "ap2Name": "Shape 1",
-      "ap1ID": "d00bfc97-32bb-4eca-bff6-871fa3ba1455",
-      "ap2ID": "3435b9b4-7f5e-49b0-83cd-06648581b756"
-    },
-    {
-      "ap1Name": "geometry or number",
-      "ap2Name": "geometry",
-      "ap1ID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6",
-      "ap2ID": "49d14c95-b4b6-4a56-a69b-6271966fe1c4"
-    },
-    {
       "ap1Name": "geometry",
       "ap2Name": "number or geometry",
       "ap1ID": "3435b9b4-7f5e-49b0-83cd-06648581b756",
@@ -967,6 +945,18 @@
       "ap2Name": "Shape 3",
       "ap1ID": "49d14c95-b4b6-4a56-a69b-6271966fe1c4",
       "ap2ID": "3435b9b4-7f5e-49b0-83cd-06648581b756"
+    },
+    {
+      "ap1Name": "geometry or number",
+      "ap2Name": "Shape 1",
+      "ap1ID": "d00bfc97-32bb-4eca-bff6-871fa3ba1455",
+      "ap2ID": "3435b9b4-7f5e-49b0-83cd-06648581b756"
+    },
+    {
+      "ap1Name": "geometry or number",
+      "ap2Name": "geometry",
+      "ap1ID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6",
+      "ap2ID": "49d14c95-b4b6-4a56-a69b-6271966fe1c4"
     }
   ],
   "unitsKey": "MM",
