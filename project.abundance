@@ -7,7 +7,8 @@
   "ioValues": [
     {
       "name": "Base width",
-      "ioValue": 120
+      "ioValue": 200,
+      "currentEquation": "200"
     },
     {
       "name": "Height",
@@ -44,14 +45,36 @@
     },
     {
       "atomType": "Molecule",
+      "name": "Plate",
+      "x": 0.2754749568221071,
+      "y": 0.6832298136645962,
+      "uniqueID": "d00bfc97-32bb-4eca-bff6-871fa3ba1455",
+      "ioValues": [],
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "name": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "3e2b0880-8f7f-497d-8b88-21a22929d83b",
+          "ioValues": []
+        }
+      ],
+      "allConnectors": [],
+      "fileTypeVersion": 1,
+      "compiledBom": {}
+    },
+    {
+      "atomType": "Molecule",
       "name": "Planter",
-      "x": 0.2970639032815198,
-      "y": 0.38509316770186336,
+      "x": 0.36960276338514686,
+      "y": 0.3695652173913043,
       "uniqueID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6",
       "ioValues": [
         {
           "name": "Base width",
-          "ioValue": 120
+          "ioValue": 200
         },
         {
           "name": "Height",
@@ -89,45 +112,44 @@
         {
           "atomType": "Circle",
           "name": "Circle",
-          "x": 0.26424870466321243,
-          "y": 0.46894409937888204,
+          "x": 0.24870466321243526,
+          "y": 0.4316770186335404,
           "uniqueID": "99d9bf53-6016-46c6-9f6d-04a1b7536ae1",
           "ioValues": [
             {
               "name": "diameter",
-              "ioValue": 10
+              "ioValue": 200
             }
           ]
         },
         {
           "atomType": "Extrude",
           "name": "Extrude",
-          "x": 0.37046632124352336,
-          "y": 0.577639751552795,
+          "x": 0.3756476683937824,
+          "y": 0.7795031055900621,
           "uniqueID": "c18671b9-8acb-4bd3-87ae-6ec6168e702d",
           "ioValues": [
             {
               "name": "height",
-              "ioValue": 10
+              "ioValue": 200
             }
           ]
         },
         {
           "atomType": "GitHubMolecule",
           "name": "Shell",
-          "x": 0.531951640759931,
-          "y": 0.30434782608695654,
+          "x": 0.5768566493955095,
+          "y": 0.5217391304347826,
           "uniqueID": "c916d4c3-5f8f-4ccd-b6dc-52eb54dd10f3",
           "ioValues": [
             {
               "name": "Height",
-              "ioValue": 10,
-              "currentEquation": "10"
+              "ioValue": 200
             },
             {
               "name": "thickness",
-              "ioValue": 1,
-              "currentEquation": "1"
+              "ioValue": 10,
+              "currentEquation": "10"
             }
           ],
           "topLevel": false,
@@ -149,11 +171,11 @@
               "ioValues": [
                 {
                   "name": "height",
-                  "ioValue": 10
+                  "ioValue": 200
                 },
                 {
                   "name": "thickness",
-                  "ioValue": 1
+                  "ioValue": 10
                 }
               ],
               "codeVersion": 1,
@@ -181,7 +203,7 @@
               "ioValues": [
                 {
                   "name": "height",
-                  "ioValue": 10
+                  "ioValue": 200
                 }
               ]
             },
@@ -304,9 +326,164 @@
           "unitsKey": "MM",
           "fileTypeVersion": 1,
           "compiledBom": []
+        },
+        {
+          "atomType": "GitHubMolecule",
+          "name": "Fillet",
+          "x": 0.7020725388601036,
+          "y": 0.2888198757763975,
+          "uniqueID": "5295125f-6d59-47b9-a7ec-756641bfaa82",
+          "ioValues": [
+            {
+              "name": "Fillet val",
+              "ioValue": 3,
+              "currentEquation": "3"
+            }
+          ],
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "name": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "b469fc7d-2b17-4553-b705-84424228e6e8",
+              "ioValues": []
+            },
+            {
+              "atomType": "Code",
+              "name": "Code",
+              "x": 0.4893617021276595,
+              "y": 0.5903614457831325,
+              "uniqueID": "9019732a-3824-495d-83df-7e98c950ef7b",
+              "ioValues": [
+                {
+                  "name": "fillet",
+                  "ioValue": 3
+                }
+              ],
+              "codeVersion": 1,
+              "code": "\n      const Inputs = [\n       {inputName: \"shape\", type: \"geometry\", defaultValue: null},\n      {inputName: \"fillet\", type: \"number\", defaultValue: .5},\n      \n      ]\n      //This defines the molecules inputs and creates variables with the same names which can be referenced in the code\n\n      //Takes the address and gets the shape from the library\n      let importedShape = library[shape]\n\n      //This makes a new copy of the shape and moves it in the X direction\n      let filletShape = importedShape.geometry[0].clone().fillet(fillet)\n\n      //Console.log works for debugging to better see what is happening under the hood\n      console.log(\"Shape:\")\n      console.log(importedShape);\n\n      //Shapes stored in the library have tags, a color, a plane, and a bill of materials like this. We don't modify them here\n      let shape1 = {\n        geometry: [filletShape],\n        tags: importedShape.tags,\n        color: importedShape.color,\n        plane: importedShape.plane,\n        bom: importedShape.bom\n      }\n\n    return shape1\n      "
+            },
+            {
+              "atomType": "Circle",
+              "name": "Circle",
+              "x": 0.19632495164410058,
+              "y": 0.38253012048192775,
+              "uniqueID": "9016dc04-ef72-4c29-9998-3dd33aaf5540",
+              "ioValues": [
+                {
+                  "name": "diameter",
+                  "ioValue": 10
+                }
+              ]
+            },
+            {
+              "atomType": "Extrude",
+              "name": "Extrude",
+              "x": 0.33462282398452614,
+              "y": 0.4427710843373494,
+              "uniqueID": "bf93d3b4-55ab-49f5-bfc0-dbc179417ecc",
+              "ioValues": [
+                {
+                  "name": "height",
+                  "ioValue": 10
+                }
+              ]
+            },
+            {
+              "atomType": "Input",
+              "name": "3D-Shape",
+              "x": 0.033,
+              "y": 0.5,
+              "uniqueID": "cb01056c-d0df-4c5c-9136-892480bcdb72",
+              "ioValues": [],
+              "type": "geometry"
+            },
+            {
+              "atomType": "Input",
+              "name": "Fillet val",
+              "x": 0.033,
+              "y": 0.713855421686747,
+              "uniqueID": "56f1d7eb-7bf9-47ce-9a63-4d4ee3e2ed67",
+              "ioValues": [],
+              "type": "number"
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap1Name": "output",
+              "ap2Name": "number or geometry",
+              "ap1ID": "9019732a-3824-495d-83df-7e98c950ef7b",
+              "ap2ID": "b469fc7d-2b17-4553-b705-84424228e6e8"
+            },
+            {
+              "ap1Name": "geometry",
+              "ap2Name": "geometry",
+              "ap1ID": "9016dc04-ef72-4c29-9998-3dd33aaf5540",
+              "ap2ID": "bf93d3b4-55ab-49f5-bfc0-dbc179417ecc"
+            },
+            {
+              "ap1Name": "number or geometry",
+              "ap2Name": "shape",
+              "ap1ID": "cb01056c-d0df-4c5c-9136-892480bcdb72",
+              "ap2ID": "9019732a-3824-495d-83df-7e98c950ef7b"
+            },
+            {
+              "ap1Name": "number or geometry",
+              "ap2Name": "fillet",
+              "ap1ID": "56f1d7eb-7bf9-47ce-9a63-4d4ee3e2ed67",
+              "ap2ID": "9019732a-3824-495d-83df-7e98c950ef7b"
+            }
+          ],
+          "parentRepo": {
+            "lastFoundGit": "2025-10-07T15:47:14.795Z",
+            "privateRepo": false,
+            "repoName": "Fillet",
+            "dateCreated": "2025-09-11T17:53:30Z",
+            "readMe": "https://raw.githubusercontent.com/alzatin/Fillet/master/README.md?sanitize=true",
+            "yyyy": 2025,
+            "topMoleculeID": "af7414ca-2d93-4ac0-abbd-27feee4ef8f1",
+            "githubMoleculesUsed": [],
+            "html_url": "https://github.com/alzatin/Fillet",
+            "topics": [
+              "abundance-tool"
+            ],
+            "parentRepo": null,
+            "forks": 0,
+            "dateModified": "739513",
+            "ranking": 0,
+            "searchField": "fillet alzatin fillet operation: receives a 3d shape and fillets the shape by a given value.  abundance-tool",
+            "owner": "alzatin",
+            "description": "Fillet operation: Receives a 3D shape and fillets the shape by a given value. ",
+            "contentURL": "https://raw.githubusercontent.com/alzatin/Fillet/master/project.abundance?sanitize=true",
+            "svgURL": "https://raw.githubusercontent.com/alzatin/Fillet/master/project.svg?sanitize=true",
+            "isLocal": false
+          },
+          "unitsKey": "Inches",
+          "fileTypeVersion": 1,
+          "compiledBom": []
         }
       ],
       "allConnectors": [
+        {
+          "ap1Name": "number or geometry",
+          "ap2Name": "diameter",
+          "ap1ID": "ae187170-5d33-4d6b-97be-f164f0fa9194",
+          "ap2ID": "99d9bf53-6016-46c6-9f6d-04a1b7536ae1"
+        },
+        {
+          "ap1Name": "number or geometry",
+          "ap2Name": "height",
+          "ap1ID": "0825e429-3f56-4812-a290-0478281742f0",
+          "ap2ID": "c18671b9-8acb-4bd3-87ae-6ec6168e702d"
+        },
+        {
+          "ap1Name": "number or geometry",
+          "ap2Name": "Height",
+          "ap1ID": "0825e429-3f56-4812-a290-0478281742f0",
+          "ap2ID": "c916d4c3-5f8f-4ccd-b6dc-52eb54dd10f3"
+        },
         {
           "ap1Name": "geometry",
           "ap2Name": "geometry",
@@ -318,32 +495,22 @@
           "ap2Name": "Shape",
           "ap1ID": "c18671b9-8acb-4bd3-87ae-6ec6168e702d",
           "ap2ID": "c916d4c3-5f8f-4ccd-b6dc-52eb54dd10f3"
-        }
-      ],
-      "fileTypeVersion": 1,
-      "compiledBom": {}
-    },
-    {
-      "atomType": "Molecule",
-      "name": "Plate",
-      "x": 0.2754749568221071,
-      "y": 0.6832298136645962,
-      "uniqueID": "d00bfc97-32bb-4eca-bff6-871fa3ba1455",
-      "ioValues": [],
-      "topLevel": false,
-      "allAtoms": [
+        },
         {
-          "atomType": "Output",
-          "name": "Output",
-          "x": 0.98,
-          "y": 0.5,
-          "uniqueID": "3e2b0880-8f7f-497d-8b88-21a22929d83b",
-          "ioValues": []
+          "ap1Name": "geometry or number",
+          "ap2Name": "3D-Shape",
+          "ap1ID": "c916d4c3-5f8f-4ccd-b6dc-52eb54dd10f3",
+          "ap2ID": "5295125f-6d59-47b9-a7ec-756641bfaa82"
+        },
+        {
+          "ap1Name": "geometry or number",
+          "ap2Name": "number or geometry",
+          "ap1ID": "5295125f-6d59-47b9-a7ec-756641bfaa82",
+          "ap2ID": "27f2bfd9-77f4-42a6-ab60-0377746524cd"
         }
       ],
-      "allConnectors": [],
       "fileTypeVersion": 1,
-      "compiledBom": {}
+      "compiledBom": []
     }
   ],
   "allConnectors": [
