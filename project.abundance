@@ -1,15 +1,150 @@
 {
-    "atomType": "Molecule",
-    "name": "Little planter",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "b182de28-600b-4a8b-923e-ff1be501fd14",
-    "ioValues": [],
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "MM",
-    "fileTypeVersion": 1,
-    "compiledBom": {},
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "name": "Little planter",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "b182de28-600b-4a8b-923e-ff1be501fd14",
+  "ioValues": [
+    {
+      "name": "Base width",
+      "ioValue": 120,
+      "currentEquation": "120"
+    },
+    {
+      "name": "Height",
+      "ioValue": 200,
+      "currentEquation": "200"
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "name": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "ae97cfff-42b5-44c5-b875-330a5d3fc3a3",
+      "ioValues": []
+    },
+    {
+      "atomType": "Molecule",
+      "name": "Planter",
+      "x": 0.2970639032815198,
+      "y": 0.38509316770186336,
+      "uniqueID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6",
+      "ioValues": [
+        {
+          "name": "Base width",
+          "ioValue": 120
+        },
+        {
+          "name": "Height",
+          "ioValue": 200
+        }
+      ],
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "name": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "27f2bfd9-77f4-42a6-ab60-0377746524cd",
+          "ioValues": []
+        },
+        {
+          "atomType": "Input",
+          "name": "Base width",
+          "x": 0.033,
+          "y": 0.422360248447205,
+          "uniqueID": "ae187170-5d33-4d6b-97be-f164f0fa9194",
+          "ioValues": [],
+          "type": "number"
+        },
+        {
+          "atomType": "Input",
+          "name": "Height",
+          "x": 0.033,
+          "y": 0.7142857142857143,
+          "uniqueID": "0825e429-3f56-4812-a290-0478281742f0",
+          "ioValues": [],
+          "type": "number"
+        },
+        {
+          "atomType": "Circle",
+          "name": "Circle",
+          "x": 0.31001727115716754,
+          "y": 0.42857142857142855,
+          "uniqueID": "48493807-f10d-44ff-954a-bdb4f558a62a",
+          "ioValues": [
+            {
+              "name": "diameter",
+              "ioValue": 10
+            }
+          ]
+        }
+      ],
+      "allConnectors": [],
+      "fileTypeVersion": 1,
+      "compiledBom": {}
+    },
+    {
+      "atomType": "Molecule",
+      "name": "Plate",
+      "x": 0.2754749568221071,
+      "y": 0.6832298136645962,
+      "uniqueID": "d00bfc97-32bb-4eca-bff6-871fa3ba1455",
+      "ioValues": [],
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "name": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "3e2b0880-8f7f-497d-8b88-21a22929d83b",
+          "ioValues": []
+        }
+      ],
+      "allConnectors": [],
+      "fileTypeVersion": 1,
+      "compiledBom": {}
+    },
+    {
+      "atomType": "Input",
+      "name": "Base width",
+      "x": 0.033,
+      "y": 0.3819875776397516,
+      "uniqueID": "a6a79867-8735-49fd-b82c-f85d408db661",
+      "ioValues": [],
+      "type": "number"
+    },
+    {
+      "atomType": "Input",
+      "name": "Height",
+      "x": 0.033,
+      "y": 0.5279503105590062,
+      "uniqueID": "e1a81db9-fb57-4f9b-a157-a44ea8dbbbc6",
+      "ioValues": [],
+      "type": "number"
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap1Name": "number or geometry",
+      "ap2Name": "Base width",
+      "ap1ID": "a6a79867-8735-49fd-b82c-f85d408db661",
+      "ap2ID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6"
+    },
+    {
+      "ap1Name": "number or geometry",
+      "ap2Name": "Height",
+      "ap1ID": "e1a81db9-fb57-4f9b-a157-a44ea8dbbbc6",
+      "ap2ID": "0d6a0bc5-674c-442d-8b29-438c33cf07a6"
+    }
+  ],
+  "unitsKey": "MM",
+  "fileTypeVersion": 1,
+  "compiledBom": {},
+  "filetypeVersion": 1
 }
